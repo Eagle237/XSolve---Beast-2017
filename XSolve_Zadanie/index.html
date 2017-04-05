@@ -1,0 +1,157 @@
+﻿<html>
+
+<head>
+
+	<meta http-equiv="Content-Language" content="pl">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>XSolve - Zadanie rekrutacyjne</title>
+	
+	<!-- MOJE SKRYPTY JS -->
+		<script src="http://localhost/myScript.js"></script>
+	
+	<!-- JQUERY -->
+		<script src="http://localhost/jquery-3.2.0.js"></script>
+	
+	<!-- BOOTSTRAP -->
+		<link href="http://localhost/css/bootstrap.min.css" rel="stylesheet">
+		<script src="http://localhost/js/bootstrap.js"></script>
+	
+	<style>
+		body {
+			font-family: 'Monotype Corsiva';
+			color: #FFD700;
+		
+			background-color: #000000;
+			background-image:url("http://localhost/img/page_bgr.jpg");
+			background-position: center;
+			background-attachment: fixed;
+			background-repeat: no-repeat
+		}
+		
+		.button {
+			background-color: #444444;
+			border: 1px solid #FFD700;
+			border-radius: 6px;
+		}
+		
+		table {
+			border: #FFD700;
+		}
+		
+		tr, td {
+			padding: 10px;
+			text-align: left;
+		}
+		
+		.navbar-default {
+			border-color: #FFD700;
+		}
+		
+		input[type=text] {
+			background-color: #444444;
+			border-color: #FFD700;
+			text-align: center;
+		}
+		
+		input[type=number] {
+			background-color: #444444;
+			border-color: #FFD700;
+			text-align: center;
+		}
+		
+		input[type=date] {
+			background-color: #444444;
+			border-color: #FFD700;
+		}
+		
+		#i1 {
+			background-image:url("http://localhost/img/nav_bgr.jpg");
+		}
+	</style>
+	
+</head>
+
+<body onload="main();">
+
+	<nav class="navbar navbar-default" role="navigation" id="i1">
+		<h1 align="center" style="color: #FFD700; text-shadow: 2px 2px 2px #882222; font-family: 'Vivaldi'; font-size: 70pt; letter-spacing: 5px">Beauty and the Beast</h1>
+		<h2 align="center" style="color: #FFD700; text-shadow: 2px 2px 2px #882222; font-family: 'Vivaldi'; font-size: 40pt; letter-spacing: 5px">castle service</h2>
+		<div style="font-size: 9pt; font-style: 'Times New Roman'; color: #FFD700; position: relative; right: 5px;" align="right">Strona wykonana przez: Klaudiusz Szymański<div>
+	</nav>
+	
+	<!--WYŚWIETLANIE WYNIKÓW-->
+	<div id="tab">
+	</div>
+
+	</br>
+	
+	<!--FORMULARZ Z KONTROLKAMI -->
+	<form name="ff" align="center">
+		<table width="400" height="300" border="1" align="center" style="background-image:url('http://localhost/img/table_bgr.jpg')">
+			<tr>
+				<td align="center" border="0" colspan="3"><p align="center">KONTROLKI:</p></td>
+			</tr>
+			<tr> <!-- KONTROLKI PAGINACJI -->
+				<td width="200" border="0"><div align="center"><input id="paginacja" type="checkbox" value="paginacja" onchange="paging();"/> Paginacja</div></td>
+				
+				<td border="0">
+					<input id="prev" type="button" class="button" value="<" disabled="true" onclick="prevPage();"/>
+					<input id="next" type="button" class="button" value=">" disabled="true" onclick="nextPage();"/>
+				</td>
+			</tr>
+			<tr> <!-- KONTROLKI SORTOWANIA -->
+				<td width="200" border="0"><div align="center"><input id="sortuj" type="button" class="button" value="sortuj" onclick="sortData();"/></div></td>
+				<td border="0">
+					<input id="identyfikator" type="radio" name="sort" value="id"/>id</br>
+					<input id="imie" type="radio" name="sort" value="name"/>imiona</br>
+					<input id="nazwisko" type="radio" name="sort" value="surname"/>nazwiska</br>
+					<input id="wiek" type="radio" name="sort" value="age"/>wiek</br>
+					<input id="funkcja" type="radio" name="sort" value="function"/>funkcje</br>
+					<input id="doswiadczenie" type="radio" name="sort" value="experience"/>doświadczenie
+				</td>
+			</tr>
+			<tr> <!-- KONTROLKI FILTROWANIA -->
+				<td width="200" border="0">
+					<div align="center">
+						</br>
+						Fraza:</br>
+						<input id="fraza" type="text" size="10">
+						</br></br>
+						
+						Liczba:
+						</br>
+						od <input id="od" type="number"/>
+						</br>
+						do <input id="do" type ="number"/>
+						</br>
+						</br>
+						
+						
+						Data:
+						</br>
+						od <input id="dataOD" type="date" size="5" value="rrrr-mm-dd" min="1936-01-01" max="1990-12-31"/>
+						</br>
+						do <input id="dataDO" type="date" size="5" value="rrrr-mm-dd" min="1936-01-01" max="1990-12-31"/>
+						</br>
+						</br>
+						
+						<input id="filtruj" type="button" class="button" value="filtruj" onclick="filterData();"/>
+					</div>
+				</td>
+				
+				<td border="0">
+					<input id="ident" type="radio" name="filter" onchange="filterRadioChange();"/>id</br>
+					<input id="name" type="radio" name="filter" onchange="filterRadioChange();"/>imie</br>
+					<input id="surname" type="radio" name="filter" onchange="filterRadioChange();"/>nazwisko</br>
+					<input id="DOB" type="radio" name="filter" onchange="filterRadioChange();"/>date urodzenia</br>
+					<input id="function" type="radio" name="filter" onchange="filterRadioChange();"/>funkcje</br>
+					<input id="exp" type="radio" name="filter" onchange="filterRadioChange();"/>doświadczenie</br>
+					<input id="none" type="radio" name="filter" onchange="filterRadioChange();"/>bez filtru
+				</td>
+			</tr>
+		</table>
+	</form>
+	
+</body>
+	
+</html>
